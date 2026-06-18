@@ -1,8 +1,6 @@
 connection: "ignored_by_script"
 
-explore: orders {
-  from: orders
-  
+explore: orders {  
   # This join is structurally sound
   join: customers_good {
     type: left_outer
