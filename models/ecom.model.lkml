@@ -1,6 +1,6 @@
 connection: "ignored_by_script"
 
-explore: order_analysis {
+explore: order {
   from: orders
   
   # This join is structurally sound
