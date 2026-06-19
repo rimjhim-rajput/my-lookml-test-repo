@@ -2,7 +2,7 @@ connection: "ignored_by_script"
 
 explore: orders {  
   # This join is structurally sound
-  from: orders
+  label: "Orders"
   join: customers_good {
     type: left_outer
     relationship: many_to_one
@@ -17,9 +17,9 @@ explore: orders {
   }
 }
 
-explore: orders_bad {  
+explore: orders {  
   # This join is structurally sound
-  from: orders
+  label: "Orders Bad"
 
   # This join will trigger a fan-out validation failure in our script
   join: customers_bad {
