@@ -2,26 +2,27 @@ connection: "ignored_by_script"
 
 explore: orders_combined {  
   from: orders
-  label: "Orders"
+  label: "Testing Combined Orders"
 
-  # This join is structurally sound
-  join: customers_good {
+  join: customers_good_alias {
+    from: customers_good
     type: left_outer
     relationship: many_to_one
-    sql_on: ${orders.customer_id} = ${customers_good.customer_id} ;;
+    sql_on: ${orders.customer_id} = ${customers_good_alias.customer_id} ;;
   }
 
   # This join will trigger a fan-out validation failure in our script
-  join: customers_bad {
+  join: customers_bad_alias{
+    from: customers_bad
     type: left_outer
     relationship: many_to_one
-    sql_on: ${orders.customer_id} = ${customers_bad.customer_id} ;;
+    sql_on: ${orders.customer_id} = ${customers_bad_alias.customer_id} ;;
   }
 }
 
-explore: orders_good {  
+explore: orders_good_only {  
   from: orders
-  label: "Orders Good"
+  label: "Testing Clean Good Orders"
 
   # This join is structurally sound
   join: customers_good {
