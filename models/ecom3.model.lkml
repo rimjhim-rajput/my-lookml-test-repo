@@ -1,13 +1,11 @@
 connection: "ignored_by_script"
 
-explore: orders_bad {  
-  from: orders
-  label: "Orders Bad"
+explore: orders {
+  label: "Clean Single Join Verification"
 
-  # This join will trigger a fan-out validation failure in our script
-  join: customers_bad {
+  join: customers_good {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${orders.customer_id} = ${customers_bad.customer_id} ;;
+    sql_on: ${orders.customer_id} = ${customers_good.customer_id} ;;
   }
 }
